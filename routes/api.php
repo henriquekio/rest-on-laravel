@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['as' => 'tarefas.'],function (){
-    Route::get('/tarefas', 'TarefasController@index');
+Route::group(['as' => 'api.'],function (){
+    Route::resource('tarefas', 'TarefasController');
+    Route::resource('categorias', 'CategoriasController');
 });
+
