@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
 
 
 class Authenticatecontroller extends Controller
@@ -17,7 +18,7 @@ class Authenticatecontroller extends Controller
     {
         $credentials = $request->only('name', 'email');
         try{
-        if(!$token = \JWTAuth::attempt($credentials)){
+        if(!$token = JWTAuth::attempt($credentials)){
             return response()->json(['error' => 'Email ou login inválidos'], Response::HTTP_UNAUTHORIZED);
         }
 
