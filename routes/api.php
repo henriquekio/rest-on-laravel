@@ -22,6 +22,7 @@ Route::group(['as' => 'auth.', 'middleware' => 'api'], function () {
 });
 
 Route::group(['as' => 'api.', 'middleware' => 'auth:api'], function () {
+    Route::post('logout', 'Api\Authenticatecontroller@logout')->name('logout');
     Route::resource('tarefas', 'Api\TarefasController');
     Route::resource('categorias', 'Api\CategoriasController');
 });

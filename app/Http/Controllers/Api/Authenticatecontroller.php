@@ -35,7 +35,7 @@ class Authenticatecontroller extends Controller
 
     public function logout()
     {
-        Auth::guard('api')->$this->logout();
+        Auth::guard('api')->logout();
 
         return response()->json([], 204);
     }
