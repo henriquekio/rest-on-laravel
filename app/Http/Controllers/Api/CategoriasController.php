@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoriaCreateRequest;
 use App\Repositories\CategoriaRepository;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,9 @@ class CategoriasController extends Controller
         $this->repository = $repository;
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $categorias = $this->repository->all();
@@ -33,6 +37,10 @@ class CategoriasController extends Controller
         return response()->json($categorias);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show($id)
     {
         $categoria = $this->repository->find($id);
@@ -40,20 +48,33 @@ class CategoriasController extends Controller
         return response()->json($categoria);
     }
 
-    public function store(Request $request)
+    /**
+     * @param CategoriaCreateRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(CategoriaCreateRequest $request)
     {
         $categoria = $this->repository->create($request->all());
 
         return response()->json($categoria);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * @param CategoriaCreateRequest $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(CategoriaCreateRequest $request, $id)
     {
         $categoria = $this->repository->update($request->all(), $id);
 
         return response()->json($categoria);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy($id)
     {
 

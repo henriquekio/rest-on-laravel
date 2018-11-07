@@ -28,7 +28,9 @@ class TarefasController extends Controller
         $this->repository = $repository;
     }
 
-
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $tarefas =  $this->repository->all();
@@ -36,12 +38,17 @@ class TarefasController extends Controller
         return response()->json($tarefas);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show($id)
     {
         $tarefa =  $this->repository->find($id);
 
         return response()->json($tarefa);
     }
+
 
     public function store(Request $request)
     {
