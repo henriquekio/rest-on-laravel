@@ -28,26 +28,37 @@ class CategoriasController extends Controller
 
     public function index()
     {
-        return $this->repository->all();
+        $categorias = $this->repository->all();
+
+        return response()->json($categorias);
     }
+
     public function show($id)
     {
-        return $this->repository->find($id);
+        $categoria = $this->repository->find($id);
+
+        return response()->json($categoria);
     }
 
     public function store(Request $request)
     {
-       return $this->repository->create($request->all());
+        $categoria = $this->repository->create($request->all());
+
+        return response()->json($categoria);
     }
 
     public function update(Request $request, $id)
     {
+        $categoria = $this->repository->update($request->all(), $id);
 
-        return $this->repository->update($request->all(), $id);
+        return response()->json($categoria);
     }
+
     public function destroy($id)
     {
 
-        return $this->repository->delete($id);
+        $categoria = $this->repository->delete($id);
+
+        return response()->json($categoria);
     }
 }
