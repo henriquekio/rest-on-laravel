@@ -31,27 +31,37 @@ class TarefasController extends Controller
 
     public function index()
     {
-        return $this->repository->all();
+        $tarefas =  $this->repository->all();
+
+        return response()->json($tarefas);
     }
 
     public function show($id)
     {
-        return $this->repository->find($id);
+        $tarefa =  $this->repository->find($id);
+
+        return response()->json($tarefa);
     }
 
     public function store(Request $request)
     {
-        return $this->repository->create($request->all());
+        $tarefa =  $this->repository->create($request->all());
+
+        return response()->json($tarefa);
     }
 
     public function update(Request $request, $id)
     {
-        return $this->repository->update($request->all(), $id);
+        $tarefa =  $this->repository->update($request->all(), $id);
+
+        return response()->json($tarefa);
     }
 
     public function destroy($id)
     {
-        return $this->repository->delete($id);
+        $tarefa =  $this->repository->delete($id);
+
+        return response()->json($tarefa);
     }
 
 }

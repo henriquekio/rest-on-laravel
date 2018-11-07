@@ -16,7 +16,10 @@ class Authenticatecontroller extends Controller
     use AuthenticatesUsers;
 
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         $credentials = $this->credentials($request);
@@ -33,10 +36,23 @@ class Authenticatecontroller extends Controller
         return response()->json(['token' => $token]);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function logout()
     {
         Auth::guard('api')->logout();
 
         return response()->json([], 204);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        $token = Auth::guard('api')->refresh();
+
+        return response()->json(['token' => $token]);
     }
 }
