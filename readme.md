@@ -9,7 +9,7 @@ A api fornece os endpoints para a administração de um todo list.
 * [Laravel repository](https://github.com/andersao/l5-repository)
 * [Jwt Auth](https://github.com/tymondesigns/jwt-auth) 
 
-##Instalação
+## Instalação
 * Instale a libs com o comando `composer install`
 * Crie o arquivo .env e gere a chave da aplicação `php artisan key:generate`
 * Rode as migrations `php artisan migrate`
