@@ -22,6 +22,8 @@ class Tarefa extends Model implements Transformable
      */
     protected $fillable = ['descricao', 'data_conclusao', 'categoria_id', 'user_id'];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function tarefa()
     {
 

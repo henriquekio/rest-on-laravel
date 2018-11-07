@@ -22,6 +22,8 @@ class Categoria extends Model implements Transformable
      */
     protected $fillable = ['descricao'];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function tarefa()
     {
         return $this->hasMany(Tarefa::class);
