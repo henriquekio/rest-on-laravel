@@ -1,5 +1,0 @@
-#!/bin/bash
-php artisan db:seed --class=UserSeeder;
-php artisan db:seed --class=CategoriaSeeder;
-php artisan db:seed --class=TarefaSeeder;
-

@@ -35,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTIdentifier()
     {
-        // TODO: Implement getJWTIdentifier() method.
+        return $this->id;
     }
 
     /**
@@ -45,6 +45,9 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims()
     {
-        // TODO: Implement getJWTCustomClaims() method.
+     return [
+         'name' => $this->name,
+         'email' => $this->email
+     ];
     }
 }

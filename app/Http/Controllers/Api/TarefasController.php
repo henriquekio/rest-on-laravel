@@ -1,35 +1,39 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-
-
-use App\Repositories\CategoriaRepository;
+use App\Http\Controllers\Controller;
+use App\Repositories\TarefaRepository;
 use Illuminate\Http\Request;
 
+
 /**
- * Class CategoriasController.
+ * Class TarefasController.
  *
- * @package namespace App\Http\Controllers;
+ * @package namespace App\Http\Controllers\Api;
  */
-class CategoriasController extends Controller
+class TarefasController extends Controller
 {
-    /** @var CategoriaRepository */
+    /**
+     * @var TarefaRepository
+     */
     protected $repository;
 
     /**
-     * CategoriasController constructor.
-     * @param CategoriaRepository $repository
+     * TarefasController constructor.
+     * @param TarefaRepository $repository
      */
-    public function __construct(CategoriaRepository $repository)
+    public function __construct(TarefaRepository $repository)
     {
         $this->repository = $repository;
     }
+
 
     public function index()
     {
         return $this->repository->all();
     }
+
     public function show($id)
     {
         return $this->repository->find($id);
@@ -37,17 +41,17 @@ class CategoriasController extends Controller
 
     public function store(Request $request)
     {
-       return $this->repository->create($request->all());
+        return $this->repository->create($request->all());
     }
 
     public function update(Request $request, $id)
     {
-
         return $this->repository->update($request->all(), $id);
     }
+
     public function destroy($id)
     {
-
         return $this->repository->delete($id);
     }
+
 }

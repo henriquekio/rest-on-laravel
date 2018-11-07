@@ -17,10 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', 'Api\Authenticatecontroller@login')->name('api.login');
+Route::group(['as' => 'auth.', 'middleware' => 'api'], function () {
+    Route::post('login', 'Api\Authenticatecontroller@login')->name('login');
+});
 
-Route::group(['as' => 'api.', 'middleware' => 'auth:api'],function (){
-    Route::resource('tarefas', 'TarefasController');
-    Route::resource('categorias', 'CategoriasController');
+Route::group(['as' => 'api.', 'middleware' => 'auth:api'], function () {
+    Route::resource('tarefas', 'Api\TarefasController');
+    Route::resource('categorias', 'Api\CategoriasController');
 });
 
