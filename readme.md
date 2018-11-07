@@ -1,4 +1,4 @@
-# API Rest todo list com o laravel
+# API Restful com o laravel
 
 App desenvolvido para a prática da estrutura de API's restful em laravel. O projeto foi desenvolvido com a utilização do repository para a abstração de camada de dados e com a autenticação baseada em tokens JWT. 
 
