@@ -17,12 +17,12 @@ class Authenticatecontroller extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('name', 'email');
-        try{
-        if(!$token = JWTAuth::attempt($credentials)){
-            return response()->json(['error' => 'Email ou login inválidos'], Response::HTTP_UNAUTHORIZED);
-        }
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'Email ou login inválidos'], Response::HTTP_UNAUTHORIZED);
+            }
 
-        }catch (JWTException $e){
+        } catch (JWTException $e) {
             return response()->json(['error' => 'Não foi possível criar o token de acesso'], Response::HTTP_UNAUTHORIZED);
         }
 
