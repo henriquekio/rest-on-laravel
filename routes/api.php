@@ -13,17 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 Route::group(['as' => 'auth.'], function () {
-    Route::post('login', 'Api\Authenticatecontroller@login')->name('login');
-    Route::post('refresh', 'Api\Authenticatecontroller@refresh')->name('refresh');
+    Route::post('login', 'Api\AuthenticateController@login')->name('login');
+    Route::post('refresh', 'Api\AuthenticateController@refresh')->name('refresh');
 });
 
 Route::group(['as' => 'api.', 'middleware' => 'auth:api'], function () {
-    Route::post('logout', 'Api\Authenticatecontroller@logout')->name('logout');
+    Route::post('logout', 'Api\AuthenticateController@logout')->name('logout');
     Route::resource('tarefas', 'Api\TarefasController');
     Route::resource('categorias', 'Api\CategoriasController');
 });

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 
-class Authenticatecontroller extends Controller
+class AuthenticateController extends Controller
 {
 
     use AuthenticatesUsers;
