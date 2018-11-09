@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Criteria\BuscaPorUsuarioCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\TarefaRepository;
@@ -31,6 +32,7 @@ class TarefaRepositoryEloquent extends BaseRepository implements TarefaRepositor
      */
     public function boot()
     {
+        $this->pushCriteria(BuscaPorUsuarioCriteria::class);
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
