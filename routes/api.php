@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 Route::group(['as' => 'auth.'], function () {
     Route::post('login', 'Api\AuthenticateController@login')->name('login');
     Route::post('refresh', 'Api\AuthenticateController@refresh')->name('refresh');
+    Route::post('cadastrar-usuario', 'Api\UsuarioController@create');
+    Route::put('alterar-usuario/{id}', 'Api\UsuarioController@update');
 });
 
 Route::group(['as' => 'api.', 'middleware' => 'auth:api'], function () {

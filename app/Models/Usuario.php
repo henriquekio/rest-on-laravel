@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class Usuario extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -45,9 +45,14 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims()
     {
-     return [
-         'name' => $this->name,
-         'email' => $this->email
-     ];
+        return [
+            'name' => $this->name,
+            'email' => $this->email
+        ];
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
     }
 }

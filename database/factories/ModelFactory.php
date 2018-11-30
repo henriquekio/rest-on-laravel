@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\User::class, function (Faker $faker) {
+$factory->define(App\Models\Usuario::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -33,6 +33,6 @@ $factory->define(\App\Models\Tarefa::class, function (Faker $faker) {
         'descricao' => $faker->text,
         'data_conclusao' => $faker->date(),
         'categoria_id' => \App\Models\Categoria::all()->random()->id,
-        'user_id' => \App\Models\User::all()->random()->id
+        'usuario_id' => \App\Models\Usuario::all()->random()->id
     ];
 });
