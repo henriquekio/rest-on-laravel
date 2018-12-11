@@ -70,16 +70,4 @@ class CategoriasController extends Controller
 
         return response()->json($categoria);
     }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function destroy($id)
-    {
-
-        $categoria = $this->repository->delete($id);
-
-        return response()->json($categoria);
-    }
 }
