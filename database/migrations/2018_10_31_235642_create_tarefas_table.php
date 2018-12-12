@@ -19,6 +19,7 @@ class CreateTarefasTable extends Migration
             $table->increments('id');
             $table->longText('descricao');
             $table->dateTime('data_conclusao');
+            $table->enum('finalizado', ['1', '0'])->default(1);
 
             $table->unsignedInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
