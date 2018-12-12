@@ -20,7 +20,7 @@ class Tarefa extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['descricao', 'data_conclusao', 'categoria_id', 'user_id'];
+    protected $fillable = ['descricao', 'data_conclusao', 'finalizado','categoria_id', 'user_id'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
@@ -28,5 +28,10 @@ class Tarefa extends Model implements Transformable
     {
 
         return $this->belongsTo(Categoria::class);
+    }
+
+    public function getFinalizadoAttribute()
+    {
+        return $this->attributes['finalizado'] === '1';
     }
 }

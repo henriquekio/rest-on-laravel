@@ -33,6 +33,7 @@ $factory->define(\App\Models\Tarefa::class, function (Faker $faker) {
         'descricao' => $faker->text,
         'data_conclusao' => $faker->date(),
         'categoria_id' => \App\Models\Categoria::all()->random()->id,
-        'usuario_id' => \App\Models\Usuario::all()->random()->id
+        'usuario_id' => \App\Models\Usuario::all()->random()->id,
+        'finalizado' => $faker->randomElement(['0', '1']),
     ];
 });
