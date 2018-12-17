@@ -25,7 +25,7 @@ class Usuario extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'email_verified_at'
+        'password', 'remember_token', 'email_verified_at', 'created_at', 'updated_at'
     ];
 
     /**
