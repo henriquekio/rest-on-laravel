@@ -25,7 +25,9 @@ class AuthenticateController extends Controller
         $credentials = $this->credentials($request);
 
         try {
-            if (!$token = auth()->attempt($credentials)) {
+            $token = auth()->attempt($credentials);
+
+            if (!$token) {
                 return response()->json(['error' => 'Email ou login inválidos'], Response::HTTP_UNAUTHORIZED);
             }
 

@@ -6,6 +6,7 @@ use App\Http\Requests\UsuarioCreateRequest;
 use App\Repositories\UsuarioRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UsuarioController extends Controller
 {
@@ -42,5 +43,16 @@ class UsuarioController extends Controller
             return response()->json(['msg' => $e->getMessage()]);
         }
 
+    }
+
+    public function show()
+    {
+        try {
+            $user = \JWTAuth::parseToken()->toUser();
+
+            return response()->json(compact('user'));
+        } catch (JWTException $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 }
