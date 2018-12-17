@@ -26,6 +26,7 @@ Route::group(['as' => 'auth.'], function () {
 
 Route::group(['as' => 'api.', 'middleware' => 'auth:api'], function () {
     Route::post('logout', 'Api\AuthenticateController@logout')->name('logout');
+    Route::get('user-data', 'Api\UsuarioController@show')->name('logout');
     Route::resource('tarefas', 'Api\TarefasController');
     Route::resource('categorias', 'Api\CategoriasController')->except(['destroy', 'edit']);
 });
