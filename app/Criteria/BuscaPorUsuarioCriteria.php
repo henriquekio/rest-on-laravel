@@ -23,7 +23,9 @@ class BuscaPorUsuarioCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        $model = $model->where('usuario_id', Auth::user()->id);
+        $user = Auth::user()->id;
+        $model = $model->where('usuario_id', $user);
+
         return $model;
     }
 }

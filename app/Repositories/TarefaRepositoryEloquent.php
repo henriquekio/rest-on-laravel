@@ -32,8 +32,8 @@ class TarefaRepositoryEloquent extends BaseRepository implements TarefaRepositor
      */
     public function boot()
     {
-        $this->pushCriteria(BuscaPorUsuarioCriteria::class);
         $this->pushCriteria(app(RequestCriteria::class));
+        $this->pushCriteria(BuscaPorUsuarioCriteria::class);
     }
 
 }
